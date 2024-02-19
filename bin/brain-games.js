@@ -1,5 +1,5 @@
 #!/usr/bin/env node
 
-import { name, printName } from "../src/cli.js";
+import { name, printName } from '../src/cli.js';
 
 printName(name);
