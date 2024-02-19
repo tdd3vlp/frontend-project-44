@@ -2,4 +2,6 @@
 
 import { name, printName } from '../src/cli.js';
 
-printName(name);
+// printName(name);
+
+export { name, printName };
