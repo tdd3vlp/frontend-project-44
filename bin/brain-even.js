@@ -2,16 +2,18 @@
 
 // ! IMPORTS
 
-import readlineSync from 'readline-sync';
-import { name, printName } from './brain-games.js';
+import readlineSync from "readline-sync";
+import { name, printName } from "./brain-games.js";
 
 // ! VARIABLES
 
+// Generate random number for a new round of game.
+const randomNumber = () => Math.floor(Math.random() * 100 + 1);
+
+// Count correct answers to stop the game
 let correctAnswers = 0;
 
 // ! FUNCTIONS
-// Generate random number for a new round of game.
-const randomNumber = () => Math.floor(Math.random() * 100 + 1);
 
 // Ask question with current random number
 const askQuestion = (number) => {
@@ -20,7 +22,7 @@ const askQuestion = (number) => {
 
 // Get user's answer
 const getAnswer = () => {
-  const answer = readlineSync.question('Your answer: ');
+  const answer = readlineSync.question("Your answer: ");
   return answer;
 };
 
@@ -29,53 +31,67 @@ const showRules = () => {
   console.log('Answer "yes" if the number is even, otherwise answer "no".');
 };
 
-// Check if user's answer is correct
-const checkValidity = (userAnswer, parity) => {
-  // Check if user has entered an invalid answer
-  if (userAnswer !== 'yes' && userAnswer !== 'no') {
-    console.log(`Incorrect input!\nLet's try again, ${name}!`);
-
-    // If the input is correct ===>
-  } else if (
-    (userAnswer === 'yes' && parity) ||
-    (userAnswer === 'no' && !parity)
-  ) {
-    correctAnswers += 1;
-    console.log('Correct!');
-
-    // => Continue game with a new round
-    newRound(randomNumber());
-
-    // => Or show the correct answer
-  } else {
+// Throw error
+const throwError = (answer) => {
+  if (answer === "yes") {
     console.log(
-      `'yes' is wrong answer ;(. Correct answer was 'no'.\nLet's try again, ${name}!`
+      `'yes' is wrong answer ;(. Correct answer was 'no'.\nLet's try again, ${name}!`,
     );
+  }
+
+  if (answer === "no") {
+    console.log(
+      `'no' is wrong answer ;(. Correct answer was 'yes'.\nLet's try again, ${name}!`,
+    );
+  }
+
+  if (answer !== "yes" && answer !== "no") {
+    console.log(`Incorrect input!\nLet's try again, ${name}!`);
   }
 };
 
+// Check if user's answer is correct
+function validateAnswer(userAnswer, parity) {
+  let result;
+
+  // If the input is correct ===>
+  if ((userAnswer === "yes" && parity) || (userAnswer === "no" && !parity)) {
+    result = true;
+  } else {
+    throwError(userAnswer);
+  }
+
+  return result;
+}
+
 // Start a new round
-const newRound = (number) => {
+const startNewRound = (number) => {
   const currentNumber = number;
-  const isEven = currentNumber % 2 === 0;
+  const parity = currentNumber % 2 === 0;
 
   //   Check if user has won the game
   if (correctAnswers === 3) {
     console.log(`Congratulations, ${name}!`);
   }
 
-  //   If not
+  //   If the game is continued
   if (correctAnswers < 3) {
     askQuestion(currentNumber);
     const answer = getAnswer();
 
-    checkValidity(answer, isEven);
+    if (validateAnswer(answer, parity)) {
+      correctAnswers += 1;
+      console.log("Correct!");
+      startNewRound(randomNumber());
+    }
   }
 };
 
-// Start a new game
+// ! GAME START
+
+// Greet user
 printName(name);
 
-// Show rules
+// Show rules and start a new round
 showRules();
-newRound(randomNumber());
+startNewRound(randomNumber());
