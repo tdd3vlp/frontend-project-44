@@ -11,7 +11,8 @@
   "license": "ISC",
   "bin": {
     "brain-games": "./bin/brain-games.js",
-    "brain-even": "./bin/brain-even.js"
+    "brain-even": "./bin/brain-even.js",
+    "brain-calc": "./bin/brain-calc.js"
   },
   "dependencies": {
     "eslint-config-airbnb-base": "^15.0.0",
@@ -20,7 +21,6 @@
   },
   "devDependencies": {
     "@types/readline-sync": "^1.4.8",
-    "eslint": "^8.56.0",
     "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-prettier": "^5.1.3"
   }
