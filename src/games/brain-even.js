@@ -12,6 +12,8 @@ let correctAnswers = 0;
 
 // ! Functions
 
+// * Find the parity of the given number
+
 const findParity = (number) => {
   let isEven = "";
 
@@ -24,11 +26,15 @@ const findParity = (number) => {
   return isEven;
 };
 
+// * The Parity Main Function
+
 const parity = (a) => {
   const result = findParity(a);
 
+  // Check if the game is won
   isWon(correctAnswers);
 
+  // Else do the following...
   if (correctAnswers < 3) {
     askQuestion(a);
     const userAnswer = getAnswer();

@@ -16,6 +16,7 @@ let correctAnswers = 0;
 export const getRandomOperand = () =>
   operands[Math.floor(Math.random() * operands.length)];
 
+// * Find the result of the given operation
 function calc(firstOperator, operand, secondOperator) {
   let result = 0;
 
@@ -34,12 +35,16 @@ function calc(firstOperator, operand, secondOperator) {
   return result;
 }
 
+// * The Calculator Main Function
+
 const calculator = (firstOperator, operand, secondOperator) => {
   const expression = `${firstOperator} ${operand} ${secondOperator}`;
   const result = calc(firstOperator, operand, secondOperator);
 
+  // Check if the game is won
   isWon(correctAnswers);
 
+  // Else do the following...
   if (correctAnswers < 3) {
     askQuestion(expression);
     const userAnswer = +getAnswer();

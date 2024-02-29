@@ -12,6 +12,8 @@ let correctAnswers = 0;
 
 // ! Functions
 
+// * Find the greatest common divisor of two numbers
+
 const findGCD = (a, b) => {
   let GCD;
 
@@ -24,12 +26,16 @@ const findGCD = (a, b) => {
   return GCD;
 };
 
+// * The Greatest Common Divisor Main Function
+
 const GCD = (a, b) => {
   const expression = `${a} ${b}`;
   const result = findGCD(a, b);
 
+  // Check if the game is won
   isWon(correctAnswers);
 
+  // Else do the following...
   if (correctAnswers < 3) {
     askQuestion(expression);
     const userAnswer = +getAnswer();
