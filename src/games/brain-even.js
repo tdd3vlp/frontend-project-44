@@ -1,9 +1,9 @@
 import {
-  name,
   getRandomNumber,
   askQuestion,
   getAnswer,
   isWon,
+  checkResult,
 } from "../index.js";
 
 // ! Variables
@@ -12,52 +12,32 @@ let correctAnswers = 0;
 
 // ! Functions
 
-const throwError = (answer) => {
-  if (answer === "yes") {
-    console.log(
-      `'yes' is wrong answer ;(. Correct answer was 'no'.\nLet's try again, ${name}!`,
-    );
+const findParity = (number) => {
+  let isEven = "";
+
+  if (number % 2 === 0) {
+    isEven = "yes";
+  } else {
+    isEven = "no";
   }
 
-  if (answer === "no") {
-    console.log(
-      `'no' is wrong answer ;(. Correct answer was 'yes'.\nLet's try again, ${name}!`,
-    );
-  }
-
-  if (answer !== "yes" && answer !== "no") {
-    console.log(`Incorrect input!\nLet's try again, ${name}!`);
-  }
+  return isEven;
 };
 
-function checkResult(userAnswer, parity) {
-  let isValidated = false;
-
-  if ((userAnswer === "yes" && parity) || (userAnswer === "no" && !parity)) {
-    console.log("Correct!");
-    correctAnswers += 1;
-    isValidated = true;
-  } else {
-    throwError(userAnswer);
-  }
-
-  return isValidated;
-}
-
-const checkParity = (number) => {
-  const currentNumber = number;
-  const parity = currentNumber % 2 === 0;
+const parity = (a) => {
+  const result = findParity(a);
 
   isWon(correctAnswers);
 
   if (correctAnswers < 3) {
-    askQuestion(currentNumber);
+    askQuestion(a);
     const userAnswer = getAnswer();
 
-    if (checkResult(userAnswer, parity)) {
-      checkParity(getRandomNumber());
+    if (checkResult(userAnswer, result)) {
+      correctAnswers += 1;
+      parity(getRandomNumber());
     }
   }
 };
 
-export default checkParity;
+export default parity;

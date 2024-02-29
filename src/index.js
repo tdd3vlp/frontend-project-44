@@ -2,11 +2,9 @@ import readlineSync from "readline-sync";
 
 import { name } from "../bin/brain-games.js";
 
-export { name };
-
 // ! Functions
 
-export const getRandomNumber = () => Math.floor(Math.random() * 10 + 1);
+export const getRandomNumber = () => Math.floor(Math.random() * 20 + 1);
 
 export const showRules = (text) => console.log(text);
 
@@ -17,6 +15,25 @@ export const getAnswer = () => {
 
   return answer;
 };
+
+export const throwError = (answer, result) => {
+  console.log(
+    `'${answer}' is wrong answer ;(. Correct answer was '${result}'.\nLet's try again, ${name}!`,
+  );
+};
+
+export function checkResult(answer, result) {
+  let isValidated = false;
+
+  if (answer === result) {
+    console.log("Correct!");
+    isValidated = true;
+  } else {
+    throwError(answer, result);
+  }
+
+  return isValidated;
+}
 
 export const isWon = (correctAnswers) => {
   if (correctAnswers === 3) {

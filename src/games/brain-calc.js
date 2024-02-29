@@ -1,6 +1,10 @@
-import { name } from "../../bin/brain-games.js";
-
-import { getRandomNumber, askQuestion, getAnswer, isWon } from "../index.js";
+import {
+  getRandomNumber,
+  askQuestion,
+  getAnswer,
+  isWon,
+  checkResult,
+} from "../index.js";
 
 // ! Variables
 
@@ -11,26 +15,6 @@ let correctAnswers = 0;
 
 export const getRandomOperand = () =>
   operands[Math.floor(Math.random() * operands.length)];
-
-const throwError = (answer, result) => {
-  console.log(
-    `'${answer}' is wrong answer ;(. Correct answer was '${result}'.\nLet's try again, ${name}!`,
-  );
-};
-
-function checkResult(answer, result) {
-  let isValidated = false;
-
-  if (Number(answer) === result) {
-    console.log("Correct!");
-    correctAnswers += 1;
-    isValidated = true;
-  } else {
-    throwError(answer, result);
-  }
-
-  return isValidated;
-}
 
 function calc(firstOperator, operand, secondOperator) {
   let result = 0;
@@ -58,9 +42,10 @@ const calculator = (firstOperator, operand, secondOperator) => {
 
   if (correctAnswers < 3) {
     askQuestion(expression);
-    const userAnswer = getAnswer();
+    const userAnswer = +getAnswer();
 
     if (checkResult(userAnswer, result)) {
+      correctAnswers += 1;
       calculator(getRandomNumber(), getRandomOperand(), getRandomNumber());
     }
   }
