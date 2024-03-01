@@ -4,11 +4,11 @@ import {
   getAnswer,
   isWon,
   checkResult,
-} from "../index.js";
+} from '../index.js';
 
 // ! Variables
 
-const operands = ["+", "-", "*"];
+const operands = ['+', '-', '*'];
 let correctAnswers = 0;
 
 // ! Functions
@@ -20,15 +20,15 @@ export const getRandomOperand = () =>
 function getResult(firstOperator, operand, secondOperator) {
   let result = 0;
 
-  if (operand === "+") {
+  if (operand === '+') {
     result = firstOperator + secondOperator;
   }
 
-  if (operand === "-") {
+  if (operand === '-') {
     result = firstOperator - secondOperator;
   }
 
-  if (operand === "*") {
+  if (operand === '*') {
     result = firstOperator * secondOperator;
   }
 

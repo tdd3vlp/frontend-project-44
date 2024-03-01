@@ -4,7 +4,7 @@ import {
   getAnswer,
   isWon,
   checkResult,
-} from "../index.js";
+} from '../index.js';
 
 // ! Variables
 
@@ -28,9 +28,9 @@ const createProgression = (length) => {
 const arithmeticProgression = () => {
   const progression = createProgression(10);
   const index = Math.floor(Math.random() * progression.length);
-  const extracted = progression.splice(index, 1, "..");
-  const result = parseInt(extracted.join(""), 10);
-  const question = progression.join(" ");
+  const extracted = progression.splice(index, 1, '..');
+  const result = parseInt(extracted.join(''), 10);
+  const question = progression.join(' ');
 
   // Check if the game is won
   isWon(correctAnswers);

@@ -4,7 +4,7 @@ import {
   getAnswer,
   isWon,
   checkResult,
-} from "../index.js";
+} from '../index.js';
 
 // ! Variables
 
@@ -27,12 +27,12 @@ const checkPrimality = (number) => {
 };
 
 const isPrime = (number) => {
-  let result = "";
+  let result = '';
 
   if (checkPrimality(number)) {
-    result = "yes";
+    result = 'yes';
   } else {
-    result = "no";
+    result = 'no';
   }
 
   // Check if the game is won

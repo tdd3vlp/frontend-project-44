@@ -4,7 +4,7 @@ import {
   getAnswer,
   isWon,
   checkResult,
-} from "../index.js";
+} from '../index.js';
 
 // ! Variables
 

@@ -1,6 +1,6 @@
-import readlineSync from "readline-sync";
+import readlineSync from 'readline-sync';
 
-import { name } from "../bin/brain-games.js";
+import { name } from '../bin/brain-games.js';
 
 // ! Functions
 
@@ -11,7 +11,7 @@ export const showRules = (text) => console.log(text);
 export const askQuestion = (argument) => console.log(`Question: ${argument}`);
 
 export const getAnswer = () => {
-  const answer = readlineSync.question("Your answer: ");
+  const answer = readlineSync.question('Your answer: ');
 
   return answer;
 };
@@ -26,7 +26,7 @@ export function checkResult(answer, result) {
   let isValidated = false;
 
   if (answer === result) {
-    console.log("Correct!");
+    console.log('Correct!');
     isValidated = true;
   } else {
     throwError(answer, result);

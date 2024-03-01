@@ -4,7 +4,7 @@ import {
   getAnswer,
   isWon,
   checkResult,
-} from "../index.js";
+} from '../index.js';
 
 // ! Variables
 
@@ -15,12 +15,12 @@ let correctAnswers = 0;
 // * Find the parity of the given number
 
 const isEven = (number) => {
-  let result = "";
+  let result = '';
 
   if (number % 2 === 0) {
-    result = "yes";
+    result = 'yes';
   } else {
-    result = "no";
+    result = 'no';
   }
 
   return result;
