@@ -35,12 +35,9 @@ const parityCheck = (number) => {
 
   // Else do the following...
   if (correctAnswers < 3) {
-    const userAnswer =
-      nextQuestion(number);
+    const userAnswer = nextQuestion(number);
 
-    if (
-      checkResult(userAnswer, result)
-    ) {
+    if (checkResult(userAnswer, result)) {
       correctAnswers += 1;
       parityCheck(getRandomNumber(60));
     }
