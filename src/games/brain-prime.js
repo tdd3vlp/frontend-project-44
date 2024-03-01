@@ -1,10 +1,4 @@
-import {
-  getRandomNumber,
-  askQuestion,
-  getAnswer,
-  isWon,
-  checkResult,
-} from '../index.js';
+import { getRandomNumber, nextQuestion, isWon, checkResult } from '../index.js';
 
 // ! Variables
 
@@ -40,8 +34,7 @@ const isPrime = (number) => {
 
   // Else do the following...
   if (correctAnswers < 3) {
-    askQuestion(number);
-    const userAnswer = getAnswer();
+    const userAnswer = nextQuestion(number);
 
     if (checkResult(userAnswer, result)) {
       correctAnswers += 1;
