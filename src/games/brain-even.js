@@ -14,22 +14,22 @@ let correctAnswers = 0;
 
 // * Find the parity of the given number
 
-const findParity = (number) => {
-  let isEven = "";
+const isEven = (number) => {
+  let result = "";
 
   if (number % 2 === 0) {
-    isEven = "yes";
+    result = "yes";
   } else {
-    isEven = "no";
+    result = "no";
   }
 
-  return isEven;
+  return result;
 };
 
 // * The Parity Main Function
 
-const parity = (a) => {
-  const result = findParity(a);
+const parityCheck = (a) => {
+  const result = isEven(a);
 
   // Check if the game is won
   isWon(correctAnswers);
@@ -41,9 +41,9 @@ const parity = (a) => {
 
     if (checkResult(userAnswer, result)) {
       correctAnswers += 1;
-      parity(getRandomNumber());
+      parityCheck(getRandomNumber(100));
     }
   }
 };
 
-export default parity;
+export default parityCheck;

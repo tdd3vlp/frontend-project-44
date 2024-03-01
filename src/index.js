@@ -4,7 +4,7 @@ import { name } from "../bin/brain-games.js";
 
 // ! Functions
 
-export const getRandomNumber = () => Math.floor(Math.random() * 20 + 1);
+export const getRandomNumber = (limit) => Math.floor(Math.random() * limit + 1);
 
 export const showRules = (text) => console.log(text);
 

@@ -28,7 +28,7 @@ const findGCD = (a, b) => {
 
 // * The Greatest Common Divisor Main Function
 
-const GCD = (a, b) => {
+const greatestCommonDivisor = (a, b) => {
   const expression = `${a} ${b}`;
   const result = findGCD(a, b);
 
@@ -42,9 +42,9 @@ const GCD = (a, b) => {
 
     if (checkResult(userAnswer, result)) {
       correctAnswers += 1;
-      GCD(getRandomNumber(), getRandomNumber());
+      greatestCommonDivisor(getRandomNumber(20), getRandomNumber(20));
     }
   }
 };
 
-export default GCD;
+export default greatestCommonDivisor;
