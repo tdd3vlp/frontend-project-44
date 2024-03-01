@@ -13,8 +13,9 @@ let correctAnswers = 0;
 
 // ! Functions
 
-export const getRandomOperand = () =>
-  operands[Math.floor(Math.random() * operands.length)];
+export function getRandomOperand() {
+  return operands[Math.floor(Math.random() * operands.length)];
+}
 
 // * Find the result of the given operation
 function getResult(firstOperator, operand, secondOperator) {
