@@ -18,6 +18,7 @@ export function getRandomOperand() {
 }
 
 // * Find the result of the given operation
+
 function getResult(firstOperator, operand, secondOperator) {
   let result = 0;
 
