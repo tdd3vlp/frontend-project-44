@@ -1,4 +1,9 @@
-import { getRandomNumber, nextQuestion, isWon, checkResult } from '../index.js';
+import {
+  getRandomNumber,
+  nextQuestion,
+  isWon,
+  checkResult,
+} from '../index.js';
 
 // ! Variables
 
@@ -11,7 +16,11 @@ const checkPrimality = (number) => {
     return false;
   }
 
-  for (let i = 2; i <= number / 2; i += 1) {
+  for (
+    let i = 2;
+    i <= number / 2;
+    i += 1
+  ) {
     if (number % i === 0) {
       return false;
     }
@@ -34,9 +43,12 @@ const isPrime = (number) => {
 
   // Else do the following...
   if (correctAnswers < 3) {
-    const userAnswer = nextQuestion(number);
+    const userAnswer =
+      nextQuestion(number);
 
-    if (checkResult(userAnswer, result)) {
+    if (
+      checkResult(userAnswer, result)
+    ) {
       correctAnswers += 1;
       isPrime(getRandomNumber(100));
     }
