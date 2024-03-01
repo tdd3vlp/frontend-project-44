@@ -1,10 +1,4 @@
-import {
-  getRandomNumber,
-  askQuestion,
-  getAnswer,
-  isWon,
-  checkResult,
-} from '../index.js';
+import { getRandomNumber, nextQuestion, isWon, checkResult } from '../index.js';
 
 // ! Variables
 
@@ -28,20 +22,19 @@ const isEven = (number) => {
 
 // * The Parity Main Function
 
-const parityCheck = (a) => {
-  const result = isEven(a);
+const parityCheck = (number) => {
+  const result = isEven(number);
 
   // Check if the game is won
   isWon(correctAnswers);
 
   // Else do the following...
   if (correctAnswers < 3) {
-    askQuestion(a);
-    const userAnswer = getAnswer();
+    const userAnswer = nextQuestion(number);
 
     if (checkResult(userAnswer, result)) {
       correctAnswers += 1;
-      parityCheck(getRandomNumber(100));
+      parityCheck(getRandomNumber(60));
     }
   }
 };

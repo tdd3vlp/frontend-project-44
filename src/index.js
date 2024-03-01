@@ -8,6 +8,12 @@ export const getRandomNumber = (limit) => Math.floor(Math.random() * limit + 1);
 
 export const showRules = (text) => console.log(text);
 
+export const isWon = (correctAnswers) => {
+  if (correctAnswers === 3) {
+    console.log(`Congratulations, ${name}!`);
+  }
+};
+
 export const askQuestion = (argument) => console.log(`Question: ${argument}`);
 
 export const getAnswer = () => {
@@ -35,8 +41,8 @@ export function checkResult(answer, result) {
   return isValidated;
 }
 
-export const isWon = (correctAnswers) => {
-  if (correctAnswers === 3) {
-    console.log(`Congratulations, ${name}!`);
-  }
+export const nextQuestion = (number) => {
+  askQuestion(number);
+  const answer = getAnswer();
+  return answer;
 };
