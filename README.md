@@ -1,7 +1,9 @@
 ### Hexlet tests and linter status:
 
-Project: 'BRAIN GAMES';
+Project: 'BRAIN GAMES'.
+
 Description: a set of simple games played through terminal/ console.
+
 Use the latest versions of JS and utilities available.
 
 Instrustions:
@@ -9,7 +11,7 @@ Instrustions:
 [![Actions Status](https://github.com/tdd3vlp/frontend-project-44/actions/workflows/hexlet-check.yml/badge.svg)](https://github.com/tdd3vlp/frontend-project-44/actions)
 
 'Parity Check' demo:
-[![asciicast](../../../../Downloads/641522.gif)](https://asciinema.org/a/k7zxsPA7WPoSEO3KqzOGfq0Ko)
+[![asciicast](./assets/gif/641522.gif)](https://asciinema.org/a/k7zxsPA7WPoSEO3KqzOGfq0Ko)
 
 'Calculator' demo:
 https://asciinema.org/a/Q24Ti3xyUvLF9j2XDdgi9fFp9
