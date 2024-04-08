@@ -15,8 +15,9 @@ Instructions:
 1. Run 'npm install'.
 2. Choose a game, start it with a corresponding command listed in 'package.json'.
 3. Follow the instructions.
+   _Good luck!_
 
-_Good luck!_
+EXAMPLES:
 
 'Parity Check':
 
@@ -40,5 +41,5 @@ _Allows user to guess the missing number in a given progression._
 
 'Prime Number Check':
 
-_Allows user to gues if the given number is prime or not._
+_Allows user to guess if the given number is prime or not._
 [![asciicast](./assets/gif/644770.gif)](https://asciinema.org/a/lrjPs0UBNaUHQSZKurguAt6Sy)
