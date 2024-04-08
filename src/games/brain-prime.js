@@ -1,7 +1,7 @@
 import { startGame } from '../index.js';
 import { generateRandomNumber } from '../../utils/generateRandomNumber.js';
 
-export const startPrimeGame = () => {
+const startPrimeGame = () => {
   startGame(
     'Answer "yes" if given number is prime. Otherwise answer "no".',
     () => {
@@ -22,3 +22,5 @@ export const startPrimeGame = () => {
     },
   );
 };
+
+export default startPrimeGame;

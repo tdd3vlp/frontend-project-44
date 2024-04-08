@@ -1,7 +1,7 @@
 import { startGame } from '../index.js';
 import { generateRandomNumber } from '../../utils/generateRandomNumber.js';
 
-export const startProgressionGame = () => {
+const startProgressionGame = () => {
   startGame('What number is missing in the progression?', () => {
     const createProgression = (length) => {
       const result = [];
@@ -26,3 +26,5 @@ export const startProgressionGame = () => {
     return [question, String(correctAnswer)];
   });
 };
+
+export default startProgressionGame;

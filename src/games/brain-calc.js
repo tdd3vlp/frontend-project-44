@@ -1,7 +1,7 @@
 import { startGame } from '../index.js';
 import { generateRandomNumber } from '../../utils/generateRandomNumber.js';
 
-export const startCalcGame = () => {
+const startCalcGame = () => {
   startGame('What is the result of the expression?', () => {
     const operands = ['+', '-', '*'];
     const firstOperator = generateRandomNumber(10);
@@ -26,3 +26,5 @@ export const startCalcGame = () => {
     return [question, String(correctAnswer)];
   });
 };
+
+export default startCalcGame;

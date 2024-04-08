@@ -1,7 +1,7 @@
 import { startGame } from '../index.js';
 import { generateRandomNumber } from '../../utils/generateRandomNumber.js';
 
-export const startEvenGame = () => {
+const startEvenGame = () => {
   startGame(
     'Answer "yes" if the number is even, otherwise answer "no".',
     () => {
@@ -18,3 +18,5 @@ export const startEvenGame = () => {
     },
   );
 };
+
+export default startEvenGame;

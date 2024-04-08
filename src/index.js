@@ -2,7 +2,7 @@ import readlineSync from 'readline-sync';
 
 const roundsCount = 3;
 
-export const startGame = (instruction, getRoundData) => {
+const startGame = (instruction, getRoundData) => {
   console.log('Welcome to the Brain Games!');
 
   const userName = readlineSync.question('May I have your name? ');
@@ -31,3 +31,5 @@ export const startGame = (instruction, getRoundData) => {
     }
   }
 };
+
+export default startGame;
