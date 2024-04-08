@@ -1,50 +1,26 @@
-import {
-  getRandomNumber,
-  askQuestion,
-  getAnswer,
-  isWon,
-  checkResult,
-} from '../index.js';
+import { startGame } from '../index.js';
+import { generateRandomNumber } from '../../utils/generateRandomNumber.js';
 
-// ! Variables
+export const startGCDGame = () => {
+  startGame('Find the greatest common divisor of given numbers.', () => {
+    const firstNumber = generateRandomNumber(10);
+    const secondNumber = generateRandomNumber(10);
 
-let correctAnswers = 0;
+    const question = `${firstNumber} ${secondNumber}`;
 
-// ! Functions
+    const findGCD = (a, b) => {
+      let GCD;
+      if (b === 0) {
+        GCD = a;
+      } else {
+        GCD = findGCD(b, a % b);
+      }
 
-// * Find the greatest common divisor of two numbers
+      return GCD;
+    };
 
-const findGCD = (a, b) => {
-  let GCD;
+    let correctAnswer = findGCD(firstNumber, secondNumber);
 
-  if (b === 0) {
-    GCD = a;
-  } else {
-    GCD = findGCD(b, a % b);
-  }
-
-  return GCD;
+    return [question, String(correctAnswer)];
+  });
 };
-
-// * The Greatest Common Divisor Main Function
-
-const greatestCommonDivisor = (a, b) => {
-  const expression = `${a} ${b}`;
-  const result = findGCD(a, b);
-
-  // Check if the game is won
-  isWon(correctAnswers);
-
-  // Else do the following...
-  if (correctAnswers < 3) {
-    askQuestion(expression);
-    const userAnswer = +getAnswer();
-
-    if (checkResult(userAnswer, result)) {
-      correctAnswers += 1;
-      greatestCommonDivisor(getRandomNumber(20), getRandomNumber(20));
-    }
-  }
-};
-
-export default greatestCommonDivisor;

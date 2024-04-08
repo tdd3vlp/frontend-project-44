@@ -1,51 +1,24 @@
-import {
-  getRandomNumber,
-  nextQuestion,
-  isWon,
-  checkResult,
-} from '../index.js';
+import { startGame } from '../index.js';
+import { generateRandomNumber } from '../../utils/generateRandomNumber.js';
 
-// ! Variables
+export const startPrimeGame = () => {
+  startGame(
+    'Answer "yes" if given number is prime. Otherwise answer "no".',
+    () => {
+      const question = generateRandomNumber(100);
+      let correctAnswer = 'yes';
 
-let correctAnswers = 0;
+      if (question <= 1) {
+        correctAnswer = 'no';
+      }
 
-// ! Functions
+      for (let i = 2; i <= question / 2; i += 1) {
+        if (question % i === 0) {
+          correctAnswer = 'no';
+        }
+      }
 
-const checkPrimality = (number) => {
-  if (number <= 1) {
-    return false;
-  }
-
-  for (let i = 2; i <= number / 2; i += 1) {
-    if (number % i === 0) {
-      return false;
-    }
-  }
-
-  return true;
+      return [question, correctAnswer];
+    },
+  );
 };
-
-const isPrime = (number) => {
-  let result = '';
-
-  if (checkPrimality(number)) {
-    result = 'yes';
-  } else {
-    result = 'no';
-  }
-
-  // Check if the game is won
-  isWon(correctAnswers);
-
-  // Else do the following...
-  if (correctAnswers < 3) {
-    const userAnswer = nextQuestion(number);
-
-    if (checkResult(userAnswer, result)) {
-      correctAnswers += 1;
-      isPrime(getRandomNumber(100));
-    }
-  }
-};
-
-export default isPrime;

@@ -1,48 +1,33 @@
 import readlineSync from 'readline-sync';
 
-import { name } from '../bin/brain-games.js';
+const roundsCount = 3;
 
-// ! Functions
+export const startGame = (instruction, getRoundData) => {
+  console.log('Welcome to the Brain Games!');
 
-export const getRandomNumber = (limit) => Math.floor(Math.random() * limit + 1);
+  const userName = readlineSync.question('May I have your name? ');
+  console.log(`Hello, ${userName}!`);
 
-export const showRules = (text) => console.log(text);
+  console.log(instruction);
+  let correctAnswersCount = 0;
 
-export const isWon = (correctAnswers) => {
-  if (correctAnswers === 3) {
-    console.log(`Congratulations, ${name}!`);
+  while (correctAnswersCount < roundsCount) {
+    const [question, correctAnswer] = getRoundData();
+    console.log(`Question: ${question}`);
+    const userAnswer = readlineSync.question('Your answer: ');
+
+    if (userAnswer === correctAnswer) {
+      console.log('Correct!');
+      correctAnswersCount += 1;
+    } else {
+      console.log(
+        `'${userAnswer}' is wrong answer ;(. Correct answer was '${correctAnswer}'.\nLet's try again, ${userName}!`,
+      );
+      break;
+    }
+
+    if (correctAnswersCount === roundsCount) {
+      console.log(`Congratulations, ${userName}!`);
+    }
   }
-};
-
-export const askQuestion = (argument) => console.log(`Question: ${argument}`);
-
-export const getAnswer = () => {
-  const answer = readlineSync.question('Your answer: ');
-
-  return answer;
-};
-
-export const throwError = (answer, result) => {
-  console.log(
-    `'${answer}' is wrong answer ;(. Correct answer was '${result}'.\nLet's try again, ${name}!`,
-  );
-};
-
-export function checkResult(answer, result) {
-  let isValidated = false;
-
-  if (answer === result) {
-    console.log('Correct!');
-    isValidated = true;
-  } else {
-    throwError(answer, result);
-  }
-
-  return isValidated;
-}
-
-export const nextQuestion = (number) => {
-  askQuestion(number);
-  const answer = getAnswer();
-  return answer;
 };

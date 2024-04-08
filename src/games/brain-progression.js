@@ -1,50 +1,28 @@
-import {
-  getRandomNumber,
-  askQuestion,
-  getAnswer,
-  isWon,
-  checkResult,
-} from '../index.js';
+import { startGame } from '../index.js';
+import { generateRandomNumber } from '../../utils/generateRandomNumber.js';
 
-// ! Variables
+export const startProgressionGame = () => {
+  startGame('What number is missing in the progression?', () => {
+    const createProgression = (length) => {
+      const result = [];
 
-let correctAnswers = 0;
+      const step = generateRandomNumber(5);
+      const start = generateRandomNumber(10);
 
-// ! Functions
+      for (let i = start; result.length < length; i += step) {
+        result.push(i);
+      }
 
-const createProgression = (length) => {
-  const progression = [];
+      return result;
+    };
 
-  const step = getRandomNumber(5);
-  const start = getRandomNumber(10);
+    const progression = createProgression(10);
+    const extractedNumberIndex = Math.floor(Math.random() * progression.length);
+    const extractedNumber = progression.splice(extractedNumberIndex, 1, '..');
 
-  for (let i = start; progression.length < length; i += step) {
-    progression.push(i);
-  }
+    const correctAnswer = parseInt(extractedNumber.join(''), 10);
+    const question = progression.join(' ');
 
-  return progression;
+    return [question, String(correctAnswer)];
+  });
 };
-
-const arithmeticProgression = () => {
-  const progression = createProgression(10);
-  const index = Math.floor(Math.random() * progression.length);
-  const extracted = progression.splice(index, 1, '..');
-  const result = parseInt(extracted.join(''), 10);
-  const question = progression.join(' ');
-
-  // Check if the game is won
-  isWon(correctAnswers);
-
-  // Else do the following...
-  if (correctAnswers < 3) {
-    askQuestion(question);
-    const userAnswer = +getAnswer();
-
-    if (checkResult(userAnswer, result)) {
-      correctAnswers += 1;
-      arithmeticProgression();
-    }
-  }
-};
-
-export default arithmeticProgression;

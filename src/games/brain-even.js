@@ -1,47 +1,20 @@
-import {
-  getRandomNumber,
-  nextQuestion,
-  isWon,
-  checkResult,
-} from '../index.js';
+import { startGame } from '../index.js';
+import { generateRandomNumber } from '../../utils/generateRandomNumber.js';
 
-// ! Variables
+export const startEvenGame = () => {
+  startGame(
+    'Answer "yes" if the number is even, otherwise answer "no".',
+    () => {
+      const question = generateRandomNumber(10);
+      let correctAnswer = '';
 
-let correctAnswers = 0;
+      if (question % 2 === 0) {
+        correctAnswer = 'yes';
+      } else {
+        correctAnswer = 'no';
+      }
 
-// ! Functions
-
-// * Find the parity of the given number
-
-const isEven = (number) => {
-  let result = '';
-
-  if (number % 2 === 0) {
-    result = 'yes';
-  } else {
-    result = 'no';
-  }
-
-  return result;
+      return [question, correctAnswer];
+    },
+  );
 };
-
-// * The Parity Main Function
-
-const parityCheck = (number) => {
-  const result = isEven(number);
-
-  // Check if the game is won
-  isWon(correctAnswers);
-
-  // Else do the following...
-  if (correctAnswers < 3) {
-    const userAnswer = nextQuestion(number);
-
-    if (checkResult(userAnswer, result)) {
-      correctAnswers += 1;
-      parityCheck(getRandomNumber(60));
-    }
-  }
-};
-
-export default parityCheck;
