@@ -13,16 +13,13 @@ const greetUser = () => {
   return userName;
 };
 
-const startGame = (instruction, getRoundData) => {
-  welcomeUser();
-  const userName = greetUser();
-
+const showInstructions = (instruction) => {
   console.log(instruction);
+};
 
-  let correctAnswersCount = 0;
-
+const playRounds = (correctAnswersCount, callback, user) => {
   while (correctAnswersCount < roundsCount) {
-    const [question, correctAnswer] = getRoundData();
+    const [question, correctAnswer] = callback();
     console.log(`Question: ${question}`);
     const userAnswer = readlineSync.question('Your answer: ');
 
@@ -31,15 +28,25 @@ const startGame = (instruction, getRoundData) => {
       correctAnswersCount += 1;
     } else {
       console.log(
-        `'${userAnswer}' is wrong answer ;(. Correct answer was '${correctAnswer}'.\nLet's try again, ${userName}!`,
+        `'${userAnswer}' is wrong answer ;(. Correct answer was '${correctAnswer}'.\nLet's try again, ${user}!`,
       );
       break;
     }
 
     if (correctAnswersCount === roundsCount) {
-      console.log(`Congratulations, ${userName}!`);
+      console.log(`Congratulations, ${user}!`);
     }
   }
+};
+
+const startGame = (instruction, getRoundData) => {
+  welcomeUser();
+  const userName = greetUser();
+  showInstructions(instruction);
+
+  let correctAnswersCount = 0;
+
+  playRounds(correctAnswersCount, getRoundData, userName);
 };
 
 export default startGame;
