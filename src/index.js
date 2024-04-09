@@ -9,6 +9,7 @@ const startGame = (instruction, getRoundData) => {
   console.log(`Hello, ${userName}!`);
 
   console.log(instruction);
+
   let correctAnswersCount = 0;
 
   while (correctAnswersCount < roundsCount) {
