@@ -6,8 +6,6 @@ const welcomeUser = () => {
   console.log('Welcome to the Brain Games!');
 };
 
-const getUserName = () => readlineSync.question('May I have your name? ');
-
 const greetUser = (user) => {
   console.log(`Hello, ${user}!`);
 };
@@ -22,7 +20,7 @@ const showQuestion = (text) => {
 
 const startGame = (instruction, getRoundData) => {
   welcomeUser();
-  const userName = getUserName();
+  const userName = readlineSync.question('May I have your name? ');
   greetUser(userName);
   showInstructions(instruction);
 
@@ -33,15 +31,16 @@ const startGame = (instruction, getRoundData) => {
     showQuestion(question);
 
     const userAnswer = readlineSync.question('Your answer: ');
-    if (userAnswer === correctAnswer) {
-      console.log('Correct!');
-      correctAnswersCount += 1;
-    } else {
+
+    if (userAnswer !== correctAnswer) {
       console.log(
         `'${userAnswer}' is wrong answer ;(. Correct answer was '${correctAnswer}'.\nLet's try again, ${userName}!`,
       );
       break;
     }
+
+    console.log('Correct!');
+    correctAnswersCount += 1;
 
     if (correctAnswersCount === roundsCount) {
       console.log(`Congratulations, ${userName}!`);
