@@ -5,18 +5,6 @@ const rule = 'What is the result of the expression?';
 const operands = ['+', '-', '*'];
 const operand = operands[Math.floor(Math.random() * operands.length)];
 
-const startCalcGame = () => {
-  startGame(rule, () => {
-    const firstOperator = generateRandomNumber(20);
-    const secondOperator = generateRandomNumber(10);
-
-    const question = `${firstOperator} ${operand} ${secondOperator}`;
-    const correctAnswer = calculate(firstOperator, operand, secondOperator);
-
-    return [question, String(correctAnswer)];
-  });
-};
-
 const calculate = (firstNumber, sign, secondNumber) => {
   let result = 0;
 
@@ -35,6 +23,18 @@ const calculate = (firstNumber, sign, secondNumber) => {
   }
 
   return result;
+};
+
+const startCalcGame = () => {
+  startGame(rule, () => {
+    const firstOperator = generateRandomNumber(20);
+    const secondOperator = generateRandomNumber(10);
+
+    const question = `${firstOperator} ${operand} ${secondOperator}`;
+    const correctAnswer = calculate(firstOperator, operand, secondOperator);
+
+    return [question, String(correctAnswer)];
+  });
 };
 
 export default startCalcGame;
