@@ -6,9 +6,7 @@ const welcomeUser = () => {
   console.log('Welcome to the Brain Games!');
 };
 
-const getUserInput = () => {
-  return readlineSync.question('May I have your name? ');
-};
+const getUserName = () => readlineSync.question('May I have your name? ');
 
 const greetUser = (user) => {
   console.log(`Hello, ${user}!`);
@@ -24,7 +22,7 @@ const showQuestion = (text) => {
 
 const startGame = (instruction, getRoundData) => {
   welcomeUser();
-  const userName = getUserInput();
+  const userName = getUserName();
   greetUser(userName);
   showInstructions(instruction);
 
