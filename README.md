@@ -1,4 +1,4 @@
-### Hexlet tests and linter status:
+### Статус теста Hexlet и линтера:
 
 [![Actions Status](https://github.com/tdd3vlp/frontend-project-44/actions/workflows/hexlet-check.yml/badge.svg)](https://github.com/tdd3vlp/frontend-project-44/actions)
 
